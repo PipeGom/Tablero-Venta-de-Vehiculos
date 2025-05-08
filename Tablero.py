@@ -2,6 +2,7 @@ import pandas as pd
 import plotly.express as px
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
+import os
 
 # Carga de datos
 df = pd.read_csv("Car Sales.xlsx - car_data.csv")
@@ -143,4 +144,5 @@ def update_income_graph(type_):
 app.title = "Auto Sales Dashboard"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run(host="0.0.0.0", port=port, debug=True)
